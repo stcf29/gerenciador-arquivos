@@ -4,6 +4,7 @@ package com.example.repositorio_arquivos.controller;
 import com.example.repositorio_arquivos.entity.Diretorio;
 import com.example.repositorio_arquivos.services.DiretorioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,11 +24,16 @@ public class DiretorioController {
     }
 
     @GetMapping
-    public List<Diretorio> getDirectories() {
-        return diretorioService.findAllDirectoriesWithFiles(); // Chama o método do serviço
+    public ResponseEntity<List<Diretorio>> getDirectories() {
+        try {
+            List<Diretorio> diretorios = diretorioService.getAllDirectories();
+            return ResponseEntity.ok(diretorios);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    // Atualizar diretório por ID
+
     @PutMapping("/{id}")
     public ResponseEntity<Diretorio> updateDirectory(@PathVariable Long id, @RequestBody Diretorio diretorio) {
         Diretorio updatedDiretorio = diretorioService.updateDirectory(id, diretorio);

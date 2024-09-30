@@ -10,7 +10,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.mockito.Mockito.when;
@@ -30,17 +33,16 @@ public class DiretorioControllerTest {
 
     @Test
     public void testGetAllDirectories() throws Exception {
-        // Simula um diretório para o teste
-        Diretorio diretorio = new Diretorio();
-        diretorio.setId(1L);
-        diretorio.setNome("Documentos");
 
-        // Mockando o serviço para retornar esse diretório
-        when(diretorioService.getAllDirectories()).thenReturn(Arrays.asList(diretorio));
+        List<Diretorio> diretorios = List.of(new Diretorio(1L, "Documents",
+                null, new ArrayList<>(), new ArrayList<>()));
 
-        // Executando o teste
-        mockMvc.perform(get("/diretorios"))
-                .andExpect(status().isOk()) // Verifica se o status é 200
-                .andExpect(jsonPath("$[0].nome").value("Documentos")); // Verifica se o nome está correto
+
+        when(diretorioService.getAllDirectories()).thenReturn(diretorios);
+
+
+        mockMvc.perform(get("/api/diretorios"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].nome").value("Documents"));
     }
 }

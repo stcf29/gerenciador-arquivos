@@ -29,7 +29,7 @@ public class ArquivoController {
         return arquivoService.getAllFiles();
     }
 
-    // Atualizar arquivo por ID
+
     @PutMapping("/{id}")
     public ResponseEntity<Arquivo> updateFile(@PathVariable Long id, @RequestBody Arquivo arquivo) {
         Arquivo updatedFile = arquivoService.updateFile(id, arquivo);

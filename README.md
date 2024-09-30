@@ -153,7 +153,7 @@ mvn test
 
 #### Testes Frontend
 
-No frontend (React), execute os testes com o comando:
+No frontend (React), execute os testes na pasta `front-rep-arquivos` com o comando:
 
 ```bash
 npm test

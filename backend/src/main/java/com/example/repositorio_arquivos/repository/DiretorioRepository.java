@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface DiretorioRepository  extends JpaRepository<Diretorio, Long> {
     @Query("SELECT d FROM Diretorio d LEFT JOIN FETCH d.files")
-    List<Diretorio> findAllWithFiles(); // Usar JOIN FETCH para carregar arquivos
+    List<Diretorio> findAllWithFiles();
 }

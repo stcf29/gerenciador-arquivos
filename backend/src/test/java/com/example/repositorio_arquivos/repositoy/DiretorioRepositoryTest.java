@@ -22,10 +22,10 @@ public class DiretorioRepositoryTest {
         Diretorio diretorio = new Diretorio();
         diretorio.setNome("TesteDiretorio");
 
-        // Salva o diretório no banco de dados
+
         Diretorio saved = diretorioRepository.save(diretorio);
 
-        // Verifica se o diretório foi salvo corretamente
+
         Optional<Diretorio> found = diretorioRepository.findById(saved.getId());
         assertTrue(found.isPresent());
         assertEquals("TesteDiretorio", found.get().getNome());
@@ -38,7 +38,7 @@ public class DiretorioRepositoryTest {
 
         Diretorio saved = diretorioRepository.save(diretorio);
 
-        // Deleta o diretório e verifica se foi removido
+
         diretorioRepository.deleteById(saved.getId());
         Optional<Diretorio> found = diretorioRepository.findById(saved.getId());
         assertFalse(found.isPresent());

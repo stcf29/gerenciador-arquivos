@@ -26,7 +26,7 @@ public class ArquivoService {
         repository.deleteById(id);
     }
 
-    // Atualizar arquivo
+
     public Arquivo updateFile(Long id, Arquivo updatedFile) {
         Arquivo existingFile = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Arquivo não encontrado"));

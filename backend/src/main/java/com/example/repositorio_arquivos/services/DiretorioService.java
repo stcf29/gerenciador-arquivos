@@ -17,10 +17,10 @@ public class DiretorioService {
     private DiretorioRepository repository;
 
     @Autowired
-    private ArquivoRepository arquivoRepository; // Corrigido: adicione @Autowired
+    private ArquivoRepository arquivoRepository;
 
     public List<Diretorio> findAllDirectoriesWithFiles() {
-        return repository.findAllWithFiles(); // Chama o método do repositório
+        return repository.findAllWithFiles();
     }
 
     public Diretorio createDirectory(Diretorio diretorio) throws Exception {
@@ -31,18 +31,18 @@ public class DiretorioService {
 
         if (diretorio.getFiles() != null) {
             for (Arquivo file : diretorio.getFiles()) {
-                file.setDiretorio(savedDirectory); // Associa o arquivo ao diretório
-                arquivoRepository.save(file); // Salva o arquivo
+                file.setDiretorio(savedDirectory);
+                arquivoRepository.save(file);
             }
 
             for (Diretorio subDir : diretorio.getSubDirectories()) {
-                subDir.setParentDirectory(savedDirectory); // Define o diretório pai
-                repository.save(subDir); // Salva o subdiretório
+                subDir.setParentDirectory(savedDirectory);
+                repository.save(subDir);
             }
         }
 
 
-        return repository.save(diretorio); // Salva o diretório
+        return repository.save(diretorio);
     }
 
     public List<Diretorio> getAllDirectories() {
@@ -53,7 +53,7 @@ public class DiretorioService {
         repository.deleteById(id);
     }
 
-    // Atualizar diretório
+
     public Diretorio updateDirectory(Long id, Diretorio updatedDirectory) {
         Diretorio existingDirectory = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Diretório não encontrado"));
@@ -61,26 +61,26 @@ public class DiretorioService {
         existingDirectory.setNome(updatedDirectory.getNome());
         existingDirectory.setParentDirectory(updatedDirectory.getParentDirectory());
 
-        // Atualiza ou insere os arquivos associados ao diretório
+
         for (Arquivo updatedFile : updatedDirectory.getFiles()) {
             if (updatedFile.getId() != null) {
-                // Verifica se o arquivo já existe
+
                 Optional<Arquivo> existingFileOpt = arquivoRepository.findById(updatedFile.getId());
 
                 if (existingFileOpt.isPresent()) {
-                    // Atualiza o arquivo existente
+
                     Arquivo existingFile = existingFileOpt.get();
                     existingFile.setNome(updatedFile.getNome());
                     existingFile.setTamanho(updatedFile.getTamanho());
                     existingFile.setDiretorio(existingDirectory);
                     arquivoRepository.save(existingFile);
                 } else {
-                    // Arquivo com ID não encontrado, cria um novo
+
                     updatedFile.setDiretorio(existingDirectory);
                     arquivoRepository.save(updatedFile);
                 }
             } else {
-                // Caso o arquivo não tenha ID, é um novo arquivo, então insere
+
                 updatedFile.setDiretorio(existingDirectory);
                 arquivoRepository.save(updatedFile);
             }

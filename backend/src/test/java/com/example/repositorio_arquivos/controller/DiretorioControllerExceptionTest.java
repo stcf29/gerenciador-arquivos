@@ -26,12 +26,12 @@ public class DiretorioControllerExceptionTest {
 
     @Test
     public void testGetAllDirectoriesThrowsException() throws Exception {
-        // Mockando o comportamento para lançar uma exceção
+
         when(diretorioService.getAllDirectories()).thenThrow(new RuntimeException("Erro no servidor"));
 
-        // Executando o teste
-        mockMvc.perform(get("/diretorios"))
-                .andExpect(status().isInternalServerError()); // Verifica se o status é 500
+
+        mockMvc.perform(get("/api/diretorios"))
+                .andExpect(status().isInternalServerError());
     }
 }
 
