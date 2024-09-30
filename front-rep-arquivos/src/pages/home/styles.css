@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+table {
+  border-collapse: collapse; /* Remove espaços entre as células */
+  width: 80%; /* Ajusta a largura da tabela */
+}
+
+th, td {
+  border: 1px solid #666666; /* Borda das células */
+  padding: 8px; /* Espaçamento interno */
+  text-align: left; /* Alinhamento do texto à esquerda */
+  color: #eeeeee;
+}
+
+th {
+  background-color: #6d6d6d; /* Cor de fundo do cabeçalho */
+}
+
+h2{
+  color: #eeeeee;
+}
