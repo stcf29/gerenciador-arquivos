@@ -13,6 +13,8 @@ Antes de começar, certifique-se de ter os seguintes itens instalados:
 
 ---
 
+### vale ressaltar que para este projeto, foram utilizadas as tecnologias React.js + vite para o front-end, Springboot 3.3.4 para o backend e o H2Database para base de dados(rodando em conjunto com spring). 
+
 ## Passo a Passo para Rodar o Projeto
 
 ### 1. Clonar o Repositório
