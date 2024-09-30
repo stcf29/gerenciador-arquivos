@@ -1,6 +1,6 @@
 # Documentação para Rodar o Projeto Localmente
 
-Pré-requisitos
+# Pré-requisitos
 Antes de começar, certifique-se de ter os seguintes itens instalados:
 
 Git - Para clonar o repositório.
