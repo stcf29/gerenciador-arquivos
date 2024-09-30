@@ -30,6 +30,10 @@ Ao entrar na IDEA do IntelliJ, basta localizar a pasta "backend" na raiz do proj
 
 O backend estará disponível em http://localhost:8080.
 
+Caso o Maven esteja instalado localmente, basta navegar até o repositório 'backend' e digitar os comandos para executar a aplicação spring:
+mvn clean install
+mvn spring-boot:run
+
 3.1. Endpoints da API
 GET /api/diretorios: Retorna todos os diretórios e seus arquivos.
 POST /api/diretorios: Cria um novo diretório.
