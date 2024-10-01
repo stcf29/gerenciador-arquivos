@@ -146,7 +146,7 @@ Na pasta raiz do projeto, haverá uma coleção do Postman chamada **Gerenciar-a
 ### 6. Rodando os Testes
 
 #### Testes Backend
-
+#### Classes de testes localizados no caminho backend\src\test\java\com\example\repositorio_arquivos
 Para rodar os testes no backend (Spring Boot), utilize o comando no diretório `backend`:
 
 ```bash
@@ -154,6 +154,8 @@ mvn test
 ```
 
 #### Testes Frontend
+
+#### Arquivos de testes localizados no caminho front-rep-arquivos\src\components
 
 No frontend (React), execute os testes na pasta `front-rep-arquivos` com o comando:
 
